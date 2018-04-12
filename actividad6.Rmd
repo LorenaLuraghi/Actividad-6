@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Ejercicio 1
 
-1. Crear una  nuevo repositorio en GitHub llamado Actividad 6.
+1. Crear una  nuevo repositorio en GitHub llamado Actividad 6. 
 
 2. Crear un proyecto de RStudio y conectarlo con su nuevo repositorio en GitHub
 
@@ -24,13 +24,38 @@ knitr::opts_chunk$set(echo = TRUE)
 # Ejercicio 2
 Cargar la librería `tidyverse` y con los datos `mpg` usar las funciones que vimos de `dplyr` para  transformar los datos de la siguiente forma. 
 
+```{r}
+library(tidyverse)
+data(mpg)
+mpg
+```
 1. Seleccionar el conjunto de autos del 2008 que tienen `hwy` mayor a 31. ¿Cuantos autos son?
+
+```{r}
+x1 <- filter(mpg,year==2008 & hwy>31)
+length(x1$hwy)
+```
+El conjunto de autos del 2008 que tienen "hwy" mayor a 31 tiene 6 autos.
 
 2. Seleccionar el conjutno de autos que tienen `cty` igual a 9 ó hwy es mayor a 90. ¿Cuantos autos son? 
 
-3. Selecciona la variable `displ` y `hwy`
+``` {r}
+x2 <- filter(mpg,cty==9 | hwy>90)
+length(x2$hwy)
+```
+El conjunto tiene 5 autos.
 
+3. Selecciona la variable `displ` y `hwy`
+```{r}
+x3 <- select(mpg,c(displ,hwy))
+x3
+```
 4. Seleccioná desde la variable `trans` hasta la variable `hwy`
+
+```{r}
+x4 <- select(mpg,trans:hwy)
+x4
+```
 
 5. Crear una nueva variable que transforme  `hwy` (millas por galón) en litros/100 km 
 Primero tenés que saber la conversión de galones a litros y de millas a kilómetros
@@ -38,3 +63,10 @@ Primero tenés que saber la conversión de galones a litros y de millas a kilóm
 `1 gallón = 3.78541 litros`
 
 `1 milla = 1.60934 km`
+
+
+
+```{r}
+mpg <- mutate(mpg,hwynew=hwy*235.22 )
+mpg
+```
