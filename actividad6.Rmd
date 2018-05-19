@@ -6,9 +6,8 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.pos = 'hbpt', out.extra = '', message = FALSE, warning = FALSE)
 ```
-
 
 # Ejercicio 1
 
@@ -37,7 +36,11 @@ length(x1$hwy)
 ```
 El conjunto de autos del 2008 que tienen "hwy" mayor a 31 tiene 6 autos.
 
-2. Seleccionar el conjutno de autos que tienen `cty` igual a 9 ó hwy es mayor a 90. ¿Cuantos autos son? 
+\fbox{\begin{minipage}{48em}
+Bien!
+\end{minipage}}
+
+2. Seleccionar el conjutno de autos que tienen `cty` igual a 9 ó hwy es mayor a 90. ¿Cuantos autos son?
 
 ``` {r}
 x2 <- filter(mpg,cty==9 | hwy>90)
@@ -46,18 +49,30 @@ length(x2$hwy)
 El conjunto tiene 5 autos.
 
 3. Selecciona la variable `displ` y `hwy`
+
+
 ```{r}
 x3 <- select(mpg,c(displ,hwy))
 x3
 ```
+
+
+\fbox{\begin{minipage}{48em}
+Bien!
+\end{minipage}}
+
+
 4. Seleccioná desde la variable `trans` hasta la variable `hwy`
 
 ```{r}
 x4 <- select(mpg,trans:hwy)
 x4
 ```
+\fbox{\begin{minipage}{48em}
+Bien!
+\end{minipage}}
 
-5. Crear una nueva variable que transforme  `hwy` (millas por galón) en litros/100 km 
+5. Crear una nueva variable que transforme  `hwy` (millas por galón) en litros/100 km
 Primero tenés que saber la conversión de galones a litros y de millas a kilómetros
 
 `1 gallón = 3.78541 litros`
@@ -70,3 +85,17 @@ Primero tenés que saber la conversión de galones a litros y de millas a kilóm
 mpg <- mutate(mpg,hwynew=hwy*235.22 )
 mpg
 ```
+
+\fbox{\begin{minipage}{48em}
+Si mir\'as la media de tu nueva variable te da 5514, es muy alto como rendimiento en  por litro. La cuenta que hay que hacer es
+mpg %>% mutate(hwylkm = (3.78541/1.60934)*100/hwy)
+\end{minipage}}
+
+
+\fbox{\begin{minipage}{48em}
+Si mir\'as la media de tu nueva variable te da 5514, es muy alto como rendimiento en  por litro. La cuenta que hay que hacer es
+mpg %>% mutate(hwylkm = (3.78541/1.60934)*100/hwy)
+\fbox{\begin{minipage}{48em}
+
+\fbox{\begin{minipage}{48em}Te faltó hacer todo el ejercicio de exploración con los datos de felicidad. PUNTOS: 3/10
+\fbox{\begin{minipage}{48em}
